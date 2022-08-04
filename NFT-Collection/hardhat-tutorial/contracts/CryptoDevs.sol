@@ -49,7 +49,7 @@
       }
 
       /**
-      * @dev startPresale starts a presale for the whitelisted addresses
+      * @dev startPresale 开始预售白名单地址
        */
       function startPresale() public onlyOwner {
           presaleStarted = true;
