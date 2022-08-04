@@ -6,13 +6,13 @@ import { abi, NFT_CONTRACT_ADDRESS } from "../constants";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-    // walletConnected keep track of whether the user's wallet is connected or not
+    // walletConnected 跟踪用户的钱包是否连接
     const [walletConnected, setWalletConnected] = useState(false);
-    // presaleStarted keeps track of whether the presale has started or not
+    // presaleStarted 跟踪预售是否已经开始
     const [presaleStarted, setPresaleStarted] = useState(false);
-    // presaleEnded keeps track of whether the presale ended
+    // presaleEnded 跟踪预售是否结束
     const [presaleEnded, setPresaleEnded] = useState(false);
-    // loading is set to true when we are waiting for a transaction to get mined
+    // 当我们等待交易被挖掘时，loading 设置为 true
     const [loading, setLoading] = useState(false);
     // checks if the currently connected MetaMask wallet is the owner of the contract
     const [isOwner, setIsOwner] = useState(false);
