@@ -24,13 +24,12 @@
       // total number of tokenIds minted
       uint256 public tokenIds;
 
-      // Whitelist contract instance
+// 白名单合约实例
       IWhitelist whitelist;
 
-      // boolean to keep track of whether presale started or not
+// 布尔值以跟踪预售是否开始
       bool public presaleStarted;
-
-      // timestamp for when presale would end
+// 预售结束的时间戳
       uint256 public presaleEnded;
 
       modifier onlyWhenNotPaused {
@@ -54,8 +53,8 @@
        */
       function startPresale() public onlyOwner {
           presaleStarted = true;
-          // Set presaleEnded time as current timestamp + 5 minutes
-          // Solidity has cool syntax for timestamps (seconds, minutes, hours, days, years)
+         // 将 presaleEnded 时间设置为当前时间戳 + 5 分钟
+           // Solidity 有很酷的时间戳语法（秒、分钟、小时、天、年）
           presaleEnded = block.timestamp + 5 minutes;
       }
 

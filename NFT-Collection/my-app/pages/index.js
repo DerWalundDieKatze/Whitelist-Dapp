@@ -14,15 +14,15 @@ export default function Home() {
     const [presaleEnded, setPresaleEnded] = useState(false);
     // 当我们等待交易被挖掘时，loading 设置为 true
     const [loading, setLoading] = useState(false);
-    // checks if the currently connected MetaMask wallet is the owner of the contract
+    // 检查当前连接的 MetaMask 钱包是否是合约的所有者
     const [isOwner, setIsOwner] = useState(false);
-    // tokenIdsMinted keeps track of the number of tokenIds that have been minted
+    // tokenIdsMinted 跟踪已铸造的 tokenIds 的数量
     const [tokenIdsMinted, setTokenIdsMinted] = useState("0");
     // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
     const web3ModalRef = useRef();
 
     /**
-     * presaleMint: Mint an NFT during the presale
+     * * presaleMint：在预售期间铸造 NFT
      */
     const presaleMint = async() => {
         try {
@@ -37,12 +37,12 @@ export default function Home() {
             );
             // call the presaleMint from the contract, only whitelisted addresses would be able to mint
             const tx = await whitelistContract.presaleMint({
-                // value signifies the cost of one crypto dev which is "0.01" eth.
-                // We are parsing `0.01` string to ether using the utils library from ethers.js
+                // value 表示一个加密开发者的成本，即“0.01”eth。
+                // 我们正在使用 ethers.js 中的 utils 库将 `0.01` 字符串解析为 ether
                 value: utils.parseEther("0.01"),
             });
             setLoading(true);
-            // wait for the transaction to get mined
+            // 等待交易被挖掘
             await tx.wait();
             setLoading(false);
             window.alert("You successfully minted a Crypto Dev!");
