@@ -316,7 +316,7 @@ export default function Home() {
         }
 
         // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
-        if (isOwner && !presaleStarted) {
+        if (!presaleStarted) {
             return ( <
                 button className = { styles.button }
                 onClick = { startPresale } >
@@ -327,14 +327,14 @@ export default function Home() {
         }
 
         // If connected user is not the owner but presale hasn't started yet, tell them that
-        if (!presaleStarted) {
-            return ( <
-                div >
-                <
-                div className = { styles.description } > Presale hasnt started! < /div> < /
-                div >
-            );
-        }
+        // if (!presaleStarted) {
+        //     return ( <
+        //         div >
+        //         <
+        //         div className = { styles.description } > Presale hasnt started! < /div> < /
+        //         div >
+        //     );
+        // }
 
         // If presale started, but hasn't ended yet, allow for minting during the presale period
         if (presaleStarted && !presaleEnded) {
