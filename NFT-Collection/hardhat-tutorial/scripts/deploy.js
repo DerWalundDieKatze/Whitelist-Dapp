@@ -24,8 +24,6 @@ async function main() {
         "Crypto Devs Contract Address:",
         deployedCryptoDevsContract.address
     );
-
-
 }
 
 // Call the main function and catch if there is any error

@@ -24,12 +24,13 @@
       // total number of tokenIds minted
       uint256 public tokenIds;
 
-// 白名单合约实例
+      // Whitelist contract instance
       IWhitelist whitelist;
 
-// 布尔值以跟踪预售是否开始
+      // boolean to keep track of whether presale started or not
       bool public presaleStarted;
-// 预售结束的时间戳
+
+      // timestamp for when presale would end
       uint256 public presaleEnded;
 
       modifier onlyWhenNotPaused {
@@ -46,16 +47,15 @@
       constructor (string memory baseURI, address whitelistContract) ERC721("Crypto Devs", "CD") {
           _baseTokenURI = baseURI;
           whitelist = IWhitelist(whitelistContract);
-          presaleStarted = true;
       }
 
       /**
-      * @dev startPresale 开始预售白名单地址
+      * @dev startPresale starts a presale for the whitelisted addresses
        */
       function startPresale() public onlyOwner {
           presaleStarted = true;
-         // 将 presaleEnded 时间设置为当前时间戳 + 5 分钟
-           // Solidity 有很酷的时间戳语法（秒、分钟、小时、天、年）
+          // Set presaleEnded time as current timestamp + 5 minutes
+          // Solidity has cool syntax for timestamps (seconds, minutes, hours, days, years)
           presaleEnded = block.timestamp + 5 minutes;
       }
 
