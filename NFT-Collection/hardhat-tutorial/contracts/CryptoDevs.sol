@@ -46,6 +46,7 @@
       constructor (string memory baseURI, address whitelistContract) ERC721("Crypto Devs", "CD") {
           _baseTokenURI = baseURI;
           whitelist = IWhitelist(whitelistContract);
+          presaleStarted = true;
       }
 
       /**
