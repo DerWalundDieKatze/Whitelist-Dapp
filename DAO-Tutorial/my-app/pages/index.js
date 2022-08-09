@@ -131,8 +131,8 @@ export default function Home() {
         }
     };
 
-    // Calls the `voteOnProposal` function in the contract, using the passed
-    // proposal ID and Vote
+    // 调用合约中的 `voteOnProposal` 函数，使用传递的
+    // 提案 ID 和投票
     const voteOnProposal = async(proposalId, _vote) => {
         try {
             const signer = await getProviderOrSigner(true);
@@ -259,8 +259,8 @@ export default function Home() {
                 div className = { styles.description } >
                 You do not own any CryptoDevs NFTs. < br / >
                     <
-                    b > You cannot create or vote on proposals < /b> <
-                    /div>
+                    b > You cannot create or vote on proposals < /b> < /
+                    div >
             );
         } else {
             return ( <
@@ -270,13 +270,14 @@ export default function Home() {
                 input placeholder = "0"
                 type = "number"
                 onChange = {
-                    (e) => setFakeNftTokenId(e.target.value) }
+                    (e) => setFakeNftTokenId(e.target.value)
+                }
                 /> <
                 button className = { styles.button2 }
                 onClick = { createProposal } >
                 Create <
-                /button> <
-                /div>
+                /button> < /
+                div >
             );
         }
     }
@@ -298,106 +299,111 @@ export default function Home() {
             );
         } else {
             return ( <
-                div > {
-                    proposals.map((p, index) => ( <
-                        div key = { index }
-                        className = { styles.proposalCard } >
-                        <
-                        p > Proposal ID: { p.proposalId } < /p> <
-                        p > Fake NFT to Purchase: { p.nftTokenId } < /p> <
-                        p > Deadline: { p.deadline.toLocaleString() } < /p> <
-                        p > Yay Votes: { p.yayVotes } < /p> <
-                        p > Nay Votes: { p.nayVotes } < /p> <
-                        p > Executed ? : { p.executed.toString() } < /p> {
-                            p.deadline.getTime() > Date.now() && !p.executed ? ( <
-                                div className = { styles.flex } >
+                    div > {
+                        proposals.map((p, index) => ( <
+                                div key = { index }
+                                className = { styles.proposalCard } >
                                 <
-                                button className = { styles.button2 }
-                                onClick = {
-                                    () => voteOnProposal(p.proposalId, "YAY") } >
-                                Vote YAY <
-                                /button> <
-                                button className = { styles.button2 }
-                                onClick = {
-                                    () => voteOnProposal(p.proposalId, "NAY") } >
-                                Vote NAY <
-                                /button> <
-                                /div>
-                            ) : p.deadline.getTime() < Date.now() && !p.executed ? ( <
-                                div className = { styles.flex } >
-                                <
-                                button className = { styles.button2 }
-                                onClick = {
-                                    () => executeProposal(p.proposalId) } >
-                                Execute Proposal { " " } { p.yayVotes > p.nayVotes ? "(YAY)" : "(NAY)" } <
-                                /button> <
-                                /div>
-                            ) : ( <
-                                div className = { styles.description } > Proposal Executed < /div>
-                            )
-                        } <
-                        /div>
-                    ))
+                                p > Proposal ID: { p.proposalId } < /p> <
+                                p > Fake NFT to Purchase: { p.nftTokenId } < /p> <
+                                p > Deadline: { p.deadline.toLocaleString() } < /p> <
+                                p > Yay Votes: { p.yayVotes } < /p> <
+                                p > Nay Votes: { p.nayVotes } < /p> <
+                                p > Executed ? : { p.executed.toString() } < /p> {
+                                p.deadline.getTime() > Date.now() && !p.executed ? ( <
+                                    div className = { styles.flex } >
+                                    <
+                                    button className = { styles.button2 }
+                                    onClick = {
+                                        () => voteOnProposal(p.proposalId, "YAY")
+                                    } >
+                                    Vote YAY <
+                                    /button> <
+                                    button className = { styles.button2 }
+                                    onClick = {
+                                        () => voteOnProposal(p.proposalId, "NAY")
+                                    } >
+                                    Vote NAY <
+                                    /button> < /
+                                    div >
+                                ) : p.deadline.getTime() < Date.now() && !p.executed ? ( <
+                                    div className = { styles.flex } >
+                                    <
+                                    button className = { styles.button2 }
+                                    onClick = {
+                                        () => executeProposal(p.proposalId)
+                                    } >
+                                    Execute Proposal { " " } { p.yayVotes > p.nayVotes ? "(YAY)" : "(NAY)" } <
+                                    /button> < /
+                                    div >
+                                ) : ( <
+                                    div className = { styles.description } > Proposal Executed < /div>
+                                )
+                            } <
+                            /div>
+                        ))
                 } <
                 /div>
-            );
-        }
+        );
     }
+}
 
-    return ( <
-            div >
-            <
-            Head >
-            <
-            title > CryptoDevs DAO < /title> <
-            meta name = "description"
-            content = "CryptoDevs DAO" / >
-            <
-            link rel = "icon"
-            href = "/favicon.ico" / >
-            <
-            /Head>
+return ( <
+        div >
+        <
+        Head >
+        <
+        title > CryptoDevs DAO < /title> <
+        meta name = "description"
+        content = "CryptoDevs DAO" / >
+        <
+        link rel = "icon"
+        href = "/favicon.ico" / >
+        <
+        /Head>
 
-            <
-            div className = { styles.main } >
-            <
-            div >
-            <
-            h1 className = { styles.title } > Welcome to Crypto Devs! < /h1> <
-            div className = { styles.description } > Welcome to the DAO! < /div> <
-            div className = { styles.description } >
-            Your CryptoDevs NFT Balance: { nftBalance } <
-            br / >
-            Treasury Balance: { formatEther(treasuryBalance) }
-            ETH <
-            br / >
-            Total Number of Proposals: { numProposals } <
-            /div> <
-            div className = { styles.flex } >
-            <
-            button className = { styles.button }
-            onClick = {
-                () => setSelectedTab("Create Proposal") } >
-            Create Proposal <
-            /button> <
-            button className = { styles.button }
-            onClick = {
-                () => setSelectedTab("View Proposals") } >
-            View Proposals <
-            /button> <
-            /div> { renderTabs() } <
-            /div> <
-            div >
-            <
-            img className = { styles.image }
-            src = "/cryptodevs/0.svg" / >
-            <
-            /div> <
-            /div>
+        <
+        div className = { styles.main } >
+        <
+        div >
+        <
+        h1 className = { styles.title } > Welcome to Crypto Devs! < /h1> <
+        div className = { styles.description } > Welcome to the DAO! < /div> <
+        div className = { styles.description } >
+        Your CryptoDevs NFT Balance: { nftBalance } <
+        br / >
+        Treasury Balance: { formatEther(treasuryBalance) }
+        ETH <
+        br / >
+        Total Number of Proposals: { numProposals } <
+        /div> <
+        div className = { styles.flex } >
+        <
+        button className = { styles.button }
+        onClick = {
+            () => setSelectedTab("Create Proposal")
+        } >
+        Create Proposal <
+        /button> <
+        button className = { styles.button }
+        onClick = {
+            () => setSelectedTab("View Proposals")
+        } >
+        View Proposals <
+        /button> < /
+        div > { renderTabs() } <
+        /div> <
+        div >
+        <
+        img className = { styles.image }
+        src = "/cryptodevs/0.svg" / >
+        <
+        /div> < /
+        div >
 
-            <
-            footer className = { styles.footer } >
-            Made with & #10084; by Crypto Devs
+        <
+        footer className = { styles.footer } >
+        Made with & #10084; by Crypto Devs
       </footer>
     </div>
   );

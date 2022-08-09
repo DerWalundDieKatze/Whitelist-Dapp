@@ -28,8 +28,5 @@ contract FakeNFTMarketplace {
             return true;
         }
         return false;
-        
     }
-
-    
 }
